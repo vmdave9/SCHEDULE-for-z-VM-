@@ -1,0 +1,253 @@
+.cs 1 on
+ SCHEDULE, Version 1.0; (c) Copyright by Simon Kharnas, 1993, 1994.
+.cm
+ 
+›|Introducing You to SCHEDULE program
+ 
+The SCHEDULE program utilizes your virtual machine's clock comparator
+to receive interrupts at the date and time determined by you. Here is
+the program's syntax:
+ 
+ 
+›|  >>--SCHEDULE--->
+›|
+›|
+›|  >-.--DELETE-.---------------.------------.--------<<
+›|    '--DEL----'               '--event_id--'
+›|    '                         '--ALL-------'
+›|    '                                      '
+›|    '--QUERY--.-.------------.--.--------.-'
+›|    '--Q------' '--event_id--'  '--QUEUE-' '
+›|    '           '--ALL-------'             '
+›|    '           '--VERSION---'             '
+›|    '           '--mm/dd/yy--'             '
+›|    '           '                          '
+›|    '           '--STATUS------------------'
+›|    '                                      '
+›|    '--ON-------.---------.---.---------.--'
+›|    '           '--NOFILE-'   '--QUIET--'  '
+›|    '--OFF----------------'                '
+›|    '--SUSPEND------------'                '
+›|    '--RESUME-------------'                '
+›|    '                                      '
+›|    '--HELP--------------------------------'
+›|    '-- ? ---------------------------------'
+›|
+›|
+›|  >--ADD--.-----------------.-.-.-.-.hh:mm:ss.--.-.--.---------->> (a)
+›|          '---- mm/dd/yy ---' ' ' ' '        'AM' '  '
+›|          '---- +nnn -------' '>' '+'        'PM' '  '-- UNTIL ->> (b)
+›|          '---- ==/dd ------'   '                 '
+›|          '---- DAIly ------'   '                 '
+›|          '---- ALL --------'   '- MIDnight ------'
+›|          '---- * ----------'   '- NOON ----------'
+›|          '---- TODay ------'
+›|          '---- TOMorrow ---'
+›|          '---- MON-FRI ----'
+›|          '---- M-F --------'
+›|          '---- WEEKDay ----'
+›|          '---- SAT-SUN ----'
+›|          '---- S-S --------'
+›|          '---- WEEKEnd ----'
+›|          '---- WEEKLy -----'
+›|          '---- MONTHly ----'
+›|          '---- =// --------'
+›|          '---- YEARly -----'
+›|          '---- =/=/= ------'
+›|          '-.MOnday---------'
+›|          ' 'TUesday--------'
+›|          ' 'WEdnesday------'
+›|          ' 'THursday-------'
+›|          ' 'FRiday---------'
+›|          ' 'SAturday-------'
+›|          ' 'SUnday---------'
+›|          ' '
+›|          '+'
+›|
+›|
+›|  (a) >>-------------------------------.--.-- MSG --.-- msg_text --<<
+›|                                       '  '-- CMS --'
+›|  (b) >>-- mm/dd/yy ---.---------------'  '-- CP ---'
+›|                       '               '
+›|                       '--hh:mm:ss.--.-'
+›|                                  'AM'
+›|                                  'PM'
+ 
+ 
+   where -›|"mm/dd/yy"›% represents Month/Day/Year (each 2 digits) on
+                       which an event is to be executed or termina-
+                       ted. "mm/dd" can be used instead and defaults
+                       to the current year.
+ 
+          ›|"hh:mm:ss"›% represents Hours:Minutes:Seconds (each 2 di-
+                       gits) - time at which an event is to be exe-
+                       cuted or terminated
+ 
+          ›|"+hh:mm:ss"›%represents Hours:Minutes:Seconds (each 2 di-
+                       gits) intervals for executing an event.
+ 
+          ›|">"›%        if found preceeding any time value, tells the
+                       SCHEDULE  routine  that  the  event  has  to be
+                       executed  immediately,  even if the next sche -
+                       duled date/time is a month or a year away  from
+                       today. If a time interval is specified follow -
+                       ing this character  (the "+" sign),  the  event
+                       will continue executing until midnight that day.
+                       Once the midnight boundary is crossed, the event
+                       will be scheduled to pop according  to the date
+                       and time selected via user-supplied dates and/or
+                       keywords.
+ 
+          ›|"+nnn"›%     represents intervals in days for executing
+                       an event. Maximum value for "nnn" is 16383,
+                       which is over 44 years.
+ 
+          ›|"msg_text"›% text of a CP/CMS command to be issued or a
+                       message to be written to a user's console.
+ 
+ 
+ 
+   ____________________________________________________________________
+ 
+ ›|   SCHEDULE ON ›% turns the schedule facility on. If SCHEDULE TIMES A
+                   file exists, it reads the file and establishes clock
+                   comparator interrupts, based on that information. No
+                   file reading occurs if the option "NOFILE" is given.
+                   "QUIET" option can be used to tell  SCHEDULE  not to
+                   write out the confirmation message to the terminal.
+ 
+ ›|   SCHEDULE OFF ›%turns the schedule facility off. "QUIET" option can
+                   be used to tell SCHEDULE not to write out the  con -
+                   firmation message to the terminal.
+ 
+ 
+ ›|   SCHEDULE ADD ›%Adds an event to the list of events to be scheduled
+                   It should be followed by date and time. Special key-
+                   words are self-explanatory and can be  used instead
+                   of date. A "+" sign in front of a keyword should be
+                   interpreted as "this event is to be repeated every".
+                   The  "date"  operand may be omitted alltogether, in
+                   which case the date defaults to today's date. "+nnn"
+                   operand  can  be used if an event is to be repeated
+                   every  "nnn"  days, where "nnn" can range from 1 to
+                   16383 days.  "+1" operand, if used in such fashion,
+                   will produce different results from "DAILY", "ALL",
+                   or "*", if a time interval is specified as the next
+                   operand. While in "DAILY" processing the timer in -
+                   terrupts will be scheduled accross  midnight,  "+1"
+                   will force the timer interval to be scheduled  anew
+                   after midnight. In the "mm/dd/yy" format of a  date
+                   "/YY" (year) can be omitted and will default to the
+                   current year. Operand in the format of "==/dd" will
+                   cause an event to be repeated monthly  on  the  day
+                   "dd". If "dd" exceeds the number of days in the gi-
+                   ven month, the last day of the month will be used.
+ 
+                   The  "time"  operand can be either an interval or a
+                   specific time at which an interrupt is to occur. If
+                   a "+" sign preceedes the "time", it should be inter-
+                   preted as  "this event is to be repeated every ..."
+                   such interval.  A  ">"  sign in front of the "time"
+                   operand will cause the event to be executed immedia-
+                   tely, before the next interrupt time is scheduled.
+ 
+                   If an event is repeatable, e.g. if it has any of the
+                   operands in "date" such as "WEEKEND", "M-F", "ALL",
+                   and etc., the event is considered to be non-expir -
+                   ing. To limit such event, so that it would expire on
+                   certain date and/or time, use the  "UNTIL"  option,
+                   followed by the date and time on when the event is
+                   to terminate.
+ 
+                   "MSG", "CMS", "CP" are the keywords determining the
+                   type of the event to be scheduled. If "MSG" keyword
+                   is specified,  a line of data following the keyword
+                   will be written to the terminal at the corresponding
+                   timer pop. If "CMS" or "CP" is specified, a CMS or a
+                   CP command following the keyword will be executed at
+                   the predetermined timer pop. CP  and  CMS  commands
+                   must be in upper case, except where they are a part
+                   of some text or operands to an exec or module.
+ 
+›|    SCHEDULE   Q ›%Displays the events scheduled on the user's console
+       -- ›| QUERY ›%or queues them on the console stack, if requested.
+                   The event to be executed next will be always marked
+                   by a ">" sign. Every event will be given an event_id
+                   number corresponding to its position in the SCHEDULE
+                   TIMES A1 file. Unlike SCHEDULE TIMES file, the QUERY
+                   command  displays  the date and the time of the NEXT
+                   scheduled timer pop,  while the former maintains the
+                   date and the time of the LAST timer pop for all re -
+                   petitive events. "mm/dd/yy" date parameter  supplied
+                   on the QUERY command will display or stack a date in
+                   the format of "MM/DD/YYYY  Day_of_week".
+ 
+›|    SCHEDULE DEL ›%Deletes a particular event (or all of the events, if
+       --›| DELETE ›%"ALL" option was specified). Comments out the cor -
+                   responding entry in SCHEDULE TIMES A1 file, provided
+                   the user didn't start the SCHEDULE facility with the
+                   "NOFILE" option.
+ 
+ 
+›|    SCHEDULE SUSPEND ›%Quiesces the execution of scheduled events.
+ 
+›|    SCHEDULE RESUME  ›%Restarts the execution of scheduled events which
+                       were quiesced.
+ 
+›|    SCHEDULE HELP    ›%Displays help information in SCHEDULE HELPCMS.
+       --   ›| ?  ›%
+ 
+ 
+   ____________________________________________________________________
+ 
+ 
+   The keywords synonymous with    DAILY: "*", "ALL"
+                                  WEEKLY: "+MONDAY"
+                                 WEEKDAY: "M-F", "MON-FRI"
+                                 WEEKEND: "S-S", "SAT-SUN"
+                                 MONTHLY: "=//"
+                                  YEARLY: "=/=/="
+ 
+     Note:  events "+MONDAY", "+TUESDAY", "+WEDNESDAY", "+THURSDAY",
+            "+FRIDAY", "+SATURDAY", and "+SUNDAY" together with the
+        1.  the keywords mentioned above will never terminate, unless
+            the "UNTIL" option is used.
+ 
+ 
+  _____________________________________________________________________
+ 
+  Unless "NOFILE" option is used during initialization of this pro -
+  gram, SCHEDULE TIMES A1 will be created/updated with the following
+  information:
+ 
+ 
+  Comment indicator byte in Col 1
+  |
+  |C          C            C        C        C        C        C   C
+  |o          o            o        o        o        o        o   o
+  |l          l            l        l        l        l        l   l
+  |s          s            s        s        s        s        s   s
+  |
+  |2-11       13-24        26-33    35-42    44-51    53-60    62  66+
+  ||          |            |        |        |        |        63  |
+  ||          |            |        |        |        |        64  |
+  ||          |            |        |        |        |        |   |
+  VV          V            V        V        V        V        V   V
+›| *SchedDate  SchedTime    LastDate LastTime TillDate TillTime Cmd Text
+ 
+ 
+ 
+  This file can be used to set up the scheduled events ahead of time,
+  instead of issuing "SCHEDULE ADD" separately for each event. Start-
+  ing and ending columns should be observed for every item specified,
+  just as displayed above. SCHEDULE TIMES A1 should never be  changed
+  while the SCHEDULE routine is active. "SCHEDULE OFF" must be in ef-
+  fect if you want to alter it.
+ 
+ 
+ 
+ ›|Note:›%
+ 
+  This program was written and tested under CMS Release 8.
+ 
+.cs 1 off

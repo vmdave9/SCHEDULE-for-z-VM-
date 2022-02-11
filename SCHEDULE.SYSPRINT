@@ -1,0 +1,135 @@
+1OS/390 V2 R10 BINDER     08:34:10 THURSDAY JANUARY 23, 2003                                                             
+                                                                                                                         
+                                                                                                                         
+ IEW2322I 1220  1   *FIXTZONE * Fix the timezone calculation for East of GMT.                                            
+ IEW2322I 1220  2   *         SCHEDULE FIXTZONE A1 -       07/02/96   12:01:02                                           
+ IEW2322I 1220  3   *         DMSGPI   MACLIB   S2 MNT190   8/30/94   13:49:24                                           
+ IEW2322I 1220  4   *         DMSOM    MACLIB   S2 MNT190   1/06/95   12:09:12                                           
+ IEW2322I 1220  5   *         IXXOM    MACLIB   S2 MNT190   8/30/94   13:44:28                                           
+ IEW2322I 1220  6   *         OSMACRO  MACLIB   S2 MNT190   3/14/94   11:07:37                                           
+ IEW2322I 1220  7   *         OSPSI    MACLIB   S2 MNT190   3/14/94   11:03:14                                           
+ IEW2322I 1220  8   *         HCPGPI   MACLIB   S2 MNT190  10/07/94   15:38:37                                           
+ IEW2322I 1220  9   *         HCPPSI   MACLIB   S2 MNT190   4/26/94   14:05:42                                           
+ IEW2322I 1220  10   *         OSVSAM   MACLIB   S2 MNT190  10/11/92    1:55:58                                          
+ IEW2322I 1220  11   *         OSMACRO1 MACLIB   S2 MNT190   3/14/94   11:07:11                                          
+ IEW2322I 1220  12   *         SCHEDULE ASSEMBLE A1 -        7/02/96   12:10:13                                          
+ IEW2322I 1220  13   ********** SFS DIRECTORY IDENTIFICATION                                                             
+ IEW2322I 1220  14   ** A-DISK - VMSYSU:DAVE.                                                                            
+ IEW2650I 5102 MODULE ENTRY NOT PROVIDED.  ENTRY DEFAULTS TO SECTION SCHEDULE.                                           
+ IEW2651W 511C ESD AMODE 24 CONFLICTS WITH USER-SPECIFIED AMODE 31 FOR ENTRY POINT SCHEDULE.                             
+ IEW2646W 5383 ESD RMODE(24) CONFLICTS WITH USER-SPECIFIED RMODE(ANY) FOR SECTION SCHEDULE.                              
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+1PROCESSING OPTIONS:                                                                                                     
+                                                                                                                         
+    ALIASES             NO                                                                                               
+    ALIGN2              NO                                                                                               
+    AMODE               31                                                                                               
+    CALL                YES                                                                                              
+    CASE                UPPER                                                                                            
+    COMPAT              UNSPECIFIED                                                                                      
+    DCBS                NO                                                                                               
+    DYNAM               NO                                                                                               
+    EXTATTR             UNSPECIFIED                                                                                      
+    EXITS:                                                                                                               
+      MESSAGE                                                                                                            
+    FILL                NONE                                                                                             
+    GID                 UNSPECIFIED                                                                                      
+    HOBSET              NO                                                                                               
+    LET                 04                                                                                               
+    LINECT              060                                                                                              
+    LIST                SUMMARY                                                                                          
+    LISTPRIV            NO                                                                                               
+    MAP                 NO                                                                                               
+    MAXBLK              032760                                                                                           
+    MSGLEVEL            00                                                                                               
+    OVLY                NO                                                                                               
+    PRINT               YES                                                                                              
+    RES                 NO                                                                                               
+    REUSABILITY         UNSPECIFIED                                                                                      
+    RMODE               ANY                                                                                              
+    STORENX             NO                                                                                               
+    TERM                YES                                                                                              
+    UID                 UNSPECIFIED                                                                                      
+    UPCASE:             NO                                                                                               
+    WKSPACE             000000K,000000K                                                                                  
+    XCAL                NO                                                                                               
+    XREF                NO                                                                                               
+    ***END OF OPTIONS***                                                                                                 
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+1SAVE OPERATION SUMMARY:                                                                                                 
+                                                                                                                         
+                                                                                                                         
+    PATH NAME           SCHEDULE MODULE   A1   CMS MODULE ./SCHEDULE                                                     
+    PROGRAM TYPE        PROGRAM OBJECT(FORMAT 3)                                                                         
+    TIME OF SAVE        08.34.10  JAN 23, 2003                                                                           
+                                                                                                                         
+                                                                                                                         
+1SAVE MODULE ATTRIBUTES:                                                                                                 
+                                                                                                                         
+    AC                  000                                                                                              
+    AMODE                31                                                                                              
+    DC                  NO                                                                                               
+    EDITABLE            YES                                                                                              
+    EXCEEDS 16MB        NO                                                                                               
+    EXECUTABLE          YES                                                                                              
+    MIGRATABLE          YES                                                                                              
+    OL                  NO                                                                                               
+    OVLY                NO                                                                                               
+    PACK,PRIME          NO,NO                                                                                            
+    PAGE ALIGN          NO                                                                                               
+    REFR                NO                                                                                               
+    RENT                NO                                                                                               
+    REUS                NO                                                                                               
+    RMODE               ANY                                                                                              
+    SCTR                NO                                                                                               
+    SSI                                                                                                                  
+    SYM GENERATED       NO                                                                                               
+    TEST                NO                                                                                               
+    XPLINK              NO                                                                                               
+    MODULE SIZE (HEX)   00004758                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+1 ENTRY POINT AND ALIAS SUMMARY:                                                                                         
+                                                                                                                         
+  NAME:            ENTRY TYPE AMODE C_OFFSET CLASS NAME        STATUS                                                    
+                                                                                                                         
+  SCHEDULE          MAIN_EP      31 00000000 B_TEXT                                                                      
+                                                                                                                         
+                          ***** E N D  O F  R E P O R T *****                                                            
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+                                                                                                                         
+1----------------------                                                                                                  
+ MESSAGE SUMMARY REPORT                                                                                                  
+ ----------------------                                                                                                  
+  SEVERE MESSAGES        (SEVERITY = 12)                                                                                 
+  NONE                                                                                                                   
+                                                                                                                         
+  ERROR MESSAGES         (SEVERITY = 08)                                                                                 
+  NONE                                                                                                                   
+                                                                                                                         
+  WARNING MESSAGES       (SEVERITY = 04)                                                                                 
+  2646  2651                                                                                                             
+                                                                                                                         
+  INFORMATIONAL MESSAGES (SEVERITY = 00)                                                                                 
+  2322  2650                                                                                                             
+                                                                                                                         
+                                                                                                                         
+  **** END OF MESSAGE SUMMARY REPORT ****                                                                                
+                                                                                                                         

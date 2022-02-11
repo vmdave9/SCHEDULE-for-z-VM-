@@ -1,0 +1,6 @@
+./ I 10360000          $ 10361000 1000                03/29/94 09:12:01         
+         AL    R1,ONEDAY+4             * Add 24hr units to ... FIXTZONE 10360100
+         BC    CC0+CC1,*+8             * avoid underflow.      FIXTZONE 10360200
+         AL    R0,FWD1                 * Add the carry bit     FIXTZONE 10360300
+         AL    R0,ONEDAY               * Add the first fwords  FIXTZONE 10360400
+         SPACE ,                                                        10360500
