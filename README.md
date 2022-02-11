@@ -21,5 +21,5 @@ Generation:
             
             Tested under both z/VM 7.1 and 7.2 
             
- Just get the VMARC file from here, upload it to your CMS session in fixed(80),binary format, and unarc it. You will gedt all of the files necessary to build SCHEDULE, plus a pre-built module ready to go. Module was built on z/VM 7.1, using the HLASM assembler.
+ Just get the VMARC file from here, upload it to your CMS session in fixed(80),binary format, and unarc it. You will get all of the files necessary to build SCHEDULE, plus a pre-built module ready to go. Module was built on z/VM 7.1, using the HLASM assembler.
 
