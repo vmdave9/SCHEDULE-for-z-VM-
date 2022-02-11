@@ -5,8 +5,7 @@ Purpose:    To provide facility for scheduling and executing various
             CP and CMS commands,  as well as for writing messages to
             the console at the time(s) predetermined by the user.
 
-Implementation: This program executes as a nucleus extension and is dri
-            ven by the Clock Comparator external interrupt X'1004'.
+Implementation: This program executes as a nucleus extension and is driven by the Clock Comparator external interrupt X'1004'.
 
 Attributes:  Self-relocating nucleus extension. Designed to work under 370, XA or ESA architecture, below or above the 16Mb line.
 
